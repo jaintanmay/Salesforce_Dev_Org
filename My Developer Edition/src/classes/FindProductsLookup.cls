@@ -8,6 +8,5 @@ public with sharing class FindProductsLookup
 		List<List<Sales_Product__c>> searchResults = [FIND :query IN ALL FIELDS RETURNING Sales_Product__c (id, Prod_Name__c, Category__c, Price__c)];
 		ProdSetup = searchResults[0];
 		return null;
-		//Test
 	}
 }
