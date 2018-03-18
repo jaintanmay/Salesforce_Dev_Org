@@ -1,0 +1,54 @@
+<apex:page controller="FindProductsMain" tabStyle="Sales_Product__c">
+    <script>
+        var newWin=null;
+        function openLookupPopup (name, id)
+        {
+            var url="/apex/AssociateProductLookup?namefield=" + name + "&idfield=" + id;
+            newWin=window.open(url, 'Popup', 'height=500, width=600, left=100, top=100, resizable=no, scrollbars=yes, toolbar=no, status=no');
+            if(window.focus())
+            {
+                newWin.focus();
+            }
+            return false;
+        }
+    
+        function closeLookupPopup ()
+        {
+            if (null!=newWin)
+            {
+                newWin.close();
+            }
+        }
+    </script>
+    
+    <apex:form >
+        <apex:pageBlock title="Lookup">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Product"/>
+                    <apex:outputPanel >
+                        <apex:inputHidden value="{!productId}" id="targetId"/>
+                        <apex:inputText value="{!productName}" size="40" id="targetName" disabled="false" onfocus="this.blur()"/>
+                        <a href="#" onclick="openLookupPopup('{!$Component.targetName}', '{!$Component.targetId}'); return false">Lookup</a>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Get Hierarchy" action="{!PrdRelations}" rerender="table"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Product Hierarchy">
+        	<apex:pageBlockTable value="{!ProdRelnList}" var="PRc" id="table">
+                <apex:column >
+                    <apex:inputCheckbox value="{!PRc.OptionSelected}"/>
+                </apex:column>
+                <apex:column headerValue="Product Name" value="{!PRc.prodReln.Child_Product_Name__c}"/>
+                <apex:column headerValue="Price" value="{!PRc.prodReln.Child_Product__r.Price__c}"/>
+                <apex:column headerValue="Category" value="{!PRc.prodReln.Category__c}"/>
+                <apex:column headerValue="Parent Category" value="{!PRc.prodReln.Parent_Product_Category__c}"/>
+        	</apex:pageBlockTable>
+	    </apex:pageBlock>
+    </apex:form>
+</apex:page>

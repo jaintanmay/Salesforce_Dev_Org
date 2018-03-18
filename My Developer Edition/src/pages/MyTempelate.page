@@ -1,0 +1,8 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: MyTempelate
+    <p><b>Welcome to <apex:insert name="headerTitle"/> page.</b></p>
+    <p><apex:insert name="body"/></p>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

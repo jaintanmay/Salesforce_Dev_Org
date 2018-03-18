@@ -1,0 +1,18 @@
+<apex:page standardController="Account">
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:pageBlock title="Account: {! account.Name}">
+      <apex:pageBlockSection title="Details">
+          <apex:outputField value="{!account.Name}" label="Account Name:"/>
+          <apex:outputField value="{!account.Owner.Name}" label="Account Owner:"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Related Contacts">
+          <apex:pageBlockTable value="{!account.Contacts}" var="item">
+              <apex:column value="{!item.Name}" headerValue="Contact Name" footerValue="End of List"/>
+          </apex:pageBlockTable>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Cases related to {!account.Name}">
+          <apex:relatedList list="Cases"/>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

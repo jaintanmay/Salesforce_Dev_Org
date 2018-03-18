@@ -1,0 +1,13 @@
+<apex:component >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Component
+  <apex:attribute name="Text" description="This is the text for Text Box" required="true" type="String"/>
+  <apex:attribute name="BorderWidth" type="Integer" description="This is the width for the text box"/>
+  <apex:attribute name="BackgroundColor" type="String" description="This will specify the background color"/>
+  <apex:attribute name="BorderColor" type="String" description="This will specify the Border color"/>
+  <div style = "border-color:{!BorderColor}; border-width:{!BorderWidth}px; border-style:solid; background-color:{!BackgroundColor}">
+      <apex:outputText value="{!Text}"></apex:outputText>
+  </div>
+  <!-- End Default Content REMOVE THIS -->
+</apex:component>

@@ -1,0 +1,8 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+    <apex:composition template="MyTempelate">
+        <apex:define name="headerTitle"> Product</apex:define>
+        <apex:define name="body">This is a demo page</apex:define>
+    </apex:composition>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

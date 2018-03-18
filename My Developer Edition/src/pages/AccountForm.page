@@ -1,0 +1,22 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false">
+  <!-- This will display account Name and Industry -->
+    <font color = "red" size = "3" weight = "bold">Welcome {!$User.FirstName & " " & $User.LastName & ". Today is "} {!Today()}</font>
+    <apex:form title="Account Details">
+        <apex:pageBlock title="Edit Account Details">
+
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton action="{!save}" value="Save" Title="Save Changes"/>
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection title="Account Details" columns="100">
+                <apex:inputField value="{!Account.Name}"/>
+                <apex:inputField value="{!Account.AccountSource}"/>
+                <apex:inputTextarea rows="5" cols="100" value="{!Account.Description}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Industry Details" columns="100">
+                <apex:inputField value="{!Account.Industry}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+  <!-- End display account Name and Industry -->
+</apex:page>

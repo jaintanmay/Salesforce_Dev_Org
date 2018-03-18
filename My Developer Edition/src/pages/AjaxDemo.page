@@ -1,0 +1,23 @@
+<apex:page standardController="account">
+  <apex:form >
+    <apex:pageBlock id="in" 
+    title="Edit accounts for {!$User.LastName}">
+    <apex:messages />  
+    <apex:pageBlockButtons >
+      <apex:commandButton action="{!quicksave}" 
+      value="Save" rerender="out, in" status="status"/>
+    </apex:pageBlockButtons>
+    <apex:pageBlockSection >
+      <apex:inputField value="{!account.name}"/>  
+      <apex:inputField value="{!account.industry}"/> 
+        </apex:pageBlockSection>
+        </apex:pageBlock> 
+  </apex:form> 
+  <apex:pageBlock id="out" title="Read View">    
+    <apex:actionstatus startText="updating..." id="status"/>
+    <apex:pageBlockSection >
+        <apex:outputField value="{!account.name}"/>  
+    <apex:outputField value="{!account.industry}"/> 
+    </apex:pageBlockSection>
+  </apex:pageblock>
+</apex:page>
